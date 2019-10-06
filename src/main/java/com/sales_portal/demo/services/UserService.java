@@ -3,8 +3,10 @@ package com.sales_portal.demo.services;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sales_portal.demo.data.DAO.Company;
+import com.sales_portal.demo.data.DAO.PendingUser;
 import com.sales_portal.demo.data.DAO.Users;
 import com.sales_portal.demo.data.DTO.UserDTO;
+import com.sales_portal.demo.data.repositories.PendingUserRepository;
 import com.sales_portal.demo.data.repositories.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.mail.SimpleMailMessage;
@@ -22,6 +24,8 @@ import java.util.Optional;
 public class UserService implements IUserService{
     private UserRepository userRepository;
     private JavaMailSender javaMailSender;
+    private PendingUserRepository pendingUserRepository;
+    private RandomStringGenerator randomStringGenerator;
 
     @Override
     public List<UserDTO> getAllUsers() {
@@ -38,12 +42,21 @@ public class UserService implements IUserService{
 
         return users.get().getEmailAddress();
     }
+
     @Override
     public void insertUser(String emailAddress, String password, String name) {
         Users u = Users.builder().emailAddress(emailAddress)
                 .password(password).name(name).build();
-        userRepository.save(u);
-        sendMail(u.getUser_id(),"mail","mail");
+        u=userRepository.save(u);
+        String activationCode =randomStringGenerator.getAlphaNumericString(20);
+        insertIntoPendingUser(activationCode,u);
+        sendMail(u.getUser_id(),"mail", activationCode);
+    }
+
+    @Override
+    public void insertIntoPendingUser(String activationCode, Users user) {
+        PendingUser pu = PendingUser.builder().activationCode(activationCode).user(user).build();
+        pendingUserRepository.save(pu);
     }
 
     @Override
@@ -59,5 +72,6 @@ public class UserService implements IUserService{
             javaMailSender.send(mail);
         } );
     }
+
 
 }

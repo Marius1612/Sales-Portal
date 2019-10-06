@@ -22,11 +22,11 @@
 <div class="main">
 
     <ul>
-        <li><a href= "client_view.html" target="_blank">Clients</a></li>
+        <li><a th:href = "@{/mvc/company/showAll}" href = "company.html">Clients</a></li>
         <li><a href= "projects.html" target="_blank"> Projects</a></li>
         <li><a href= "tasks.html" target="_blank">Tasks</a></li>
         <li><a th:href = "@{/mvc/help}" href="help.html">Help</a></li>
-        <li><a href= "loginForm.html" target="_blank">Logout</a></li>
+        <li><a th:href = "@{/login}" href = "login.html">Logout</a></li>
     </ul>
 </div>
 <div class="new_company">

@@ -20,10 +20,10 @@ public class PendingUser {
     private Users user;
 
     @Builder
-    public PendingUser(Integer id, String activationCode, Date expireDate, Users user) {
+    public PendingUser(Integer id, String activationCode, Users user) {
         this.id = id;
         this.activationCode = activationCode;
-        this.expireDate = expireDate;
         this.user = user;
     }
+
 }
