@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang = "en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Sales system administration">
+    <meta name="author" content="Administrator">
+    <meta name="viewport" content="initial-scale = 1.0">
+    <title> New Contact</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/new_company.css">
+</head>
+<body>
+<div class="main">
+
+    <ul>
+        <li><a href= "loginForm.html" target="_blank">Login</a></li>
+        <li><a href= "client_view.html" target="_blank">Clients</a></li>
+        <li><a href= "projects.html" target="_blank"> Projects</a></li>
+        <li><a href= "tasks.html" target="_blank">Tasks</a></li>
+        <li><a th:href = "@{/mvc/help}" href="help.html">Help</a></li>
+    </ul>
+</div>
+<div class="new_company">
+
+    <div class="form">
+        <h1>Create new company</h1>
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input  id="company_name" type="text" class="validate">
+                        <label for="company_name">Company Name</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="website" type="text" class="validate">
+                        <label for="website">Website</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="phone_number" type="text" class="validate">
+                        <label for="phone_number">Phone Number</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="address" type="text" class="validate">
+                        <label for="address">Address</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="invoicing_details" type="text" class="validate">
+                        <label for="invoicing_details">Invoicing details</label>
+                    </div>
+                </div>
+                <button id="save">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

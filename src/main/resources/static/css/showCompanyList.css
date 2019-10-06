@@ -1,0 +1,71 @@
+
+table{
+  color: #fff;
+}
+.actions i:hover, .actions i:active{
+  background: #73C6B6;
+  color: #fff;
+  padding: 5px 10px;
+  border: 1px solid transparent;
+  transition: 0.6s ease;
+}
+.ul add_comp{
+  float: left;
+  list-style-type: none;
+  margin-top: 25px;
+
+}
+.li add_comp{
+  display: inline-block;
+}
+.li add_comp  a{
+  text-decoration: none;
+  color: #fff;
+  padding: 5px 20px;
+  border: 1px solid transparent;
+  transition: 0.6s ease;
+}
+
+.li add_comp a:hover{
+  background-color: #fff;
+  color: #000;
+}
+
+.li add_comp .active a{
+  background-color: #000;
+  color: #fff;
+
+
+table{
+  color: #fff;
+}
+.actions i:hover, .actions i:active{
+  background: #73C6B6;
+  color: #fff;
+  padding: 5px 10px;
+  border: 1px solid transparent;
+  transition: 0.6s ease;
+}
+
+button{
+
+  font-family: sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #A2D9CE;
+  width:200px;
+  margin-left: 20px;
+  border: 0;
+  padding: 15px;
+  font-size: 14px;
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 20px;
+
+
+  }
+
+button:hover,  button:active{
+  background: #73C6B6;
+
+}
