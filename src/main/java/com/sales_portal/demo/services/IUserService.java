@@ -11,4 +11,5 @@ public interface IUserService {
     void insertUser(String emailAddress, String password, String name);
     void sendMail(Integer userId, String subject, String content);
     void insertIntoPendingUser(String activationCode, Users user);
+    //String linkCreator(String link, Integer user_Id);
 }

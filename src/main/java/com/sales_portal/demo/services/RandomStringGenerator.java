@@ -1,5 +1,6 @@
 package com.sales_portal.demo.services;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -25,5 +26,13 @@ class RandomStringGenerator {
         }
 
         return sb.toString();
+    }
+
+
+    public String linkCreator(String link){
+        String activationCode = getAlphaNumericString(20);
+        link = "http://localhost:8080/login" + "?" + activationCode;
+
+        return link;
     }
 }

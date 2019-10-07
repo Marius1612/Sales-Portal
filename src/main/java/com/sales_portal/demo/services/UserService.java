@@ -1,20 +1,16 @@
 package com.sales_portal.demo.services;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sales_portal.demo.data.DAO.Company;
 import com.sales_portal.demo.data.DAO.PendingUser;
 import com.sales_portal.demo.data.DAO.Users;
 import com.sales_portal.demo.data.DTO.UserDTO;
 import com.sales_portal.demo.data.repositories.PendingUserRepository;
 import com.sales_portal.demo.data.repositories.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -43,14 +39,27 @@ public class UserService implements IUserService{
         return users.get().getEmailAddress();
     }
 
+
+//    @Override
+//    public String linkCreator(String link, Integer user_Id){
+//        randomStringGenerator.getActivationCode() = randomStringGenerator.getAlphaNumericString(6);
+//        link = "http://localhost:8080/login" + "?" + activationCode;
+//
+//        return link;
+//    }
+
     @Override
     public void insertUser(String emailAddress, String password, String name) {
+        //String activationCode;
+        String activationCode = null;
+        //activationCode.equals(this.activationCode);
         Users u = Users.builder().emailAddress(emailAddress)
                 .password(password).name(name).build();
-        u=userRepository.save(u);
-        String activationCode =randomStringGenerator.getAlphaNumericString(20);
-        insertIntoPendingUser(activationCode,u);
-        sendMail(u.getUser_id(),"mail", activationCode);
+        u = userRepository.save(u);
+        //activationCode = randomStringGenerator.getAlphaNumericString(20);
+        String link = randomStringGenerator.linkCreator(activationCode);
+        insertIntoPendingUser(link,u);
+        sendMail(u.getUser_id(),"mail", link);
     }
 
     @Override
@@ -58,6 +67,8 @@ public class UserService implements IUserService{
         PendingUser pu = PendingUser.builder().activationCode(activationCode).user(user).build();
         pendingUserRepository.save(pu);
     }
+
+
 
     @Override
     public void sendMail(Integer userId, String subject, String content) {
