@@ -57,12 +57,12 @@ public class CompanyService implements ICompanyService{
 
 
     @Override
-    public void modifyCompany(Integer id, Optional<String> company_name,
+    public void modifyCompany(Integer id, Optional<String> companyName,
                               Optional<String> company_website, Optional<String> company_address,
                               Optional<String>phone_number, Optional<String>invoicing_details) {
         Optional<Company> company = companyRepository.findById(id);
         company.ifPresent(c -> {
-            company_name.ifPresent(n -> c.setCompanyName(n));
+            companyName.ifPresent(n -> c.setCompanyName(n));
             company_website.ifPresent( w -> c.setCompany_website(w));
             company_address.ifPresent(a -> c.setCompany_address(a));
             phone_number.ifPresent(a -> c.setPhone_number(a));
