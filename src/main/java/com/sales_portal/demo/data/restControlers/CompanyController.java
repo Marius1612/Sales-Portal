@@ -16,8 +16,8 @@ public class CompanyController {
 //    }
 
 //    @GetMapping("company/insert")
-//    public void insertCompany(String company_name, String company_website, String phone_number, String address, String invoicing_details) {
-//        companyService.insertCompany(company_name, company_website, phone_number, address,invoicing_details);
+//    public void insertCompany(String companyName, String company_website, String phone_number, String address, String invoicing_details) {
+//        companyService.insertCompany(companyName, company_website, phone_number, address,invoicing_details);
 //    }
 }
 

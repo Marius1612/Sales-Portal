@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show All Contacts</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/showCompanyList.css">
+    <link rel="stylesheet" type="text/css" href="/css/showContactList.css">
+
+</head>
+<body>
+
+<div class="main">
+
+    <ul>
+        <li><a th:href = "@{/mvc/company/showAll}" href = "/company.html">Clients</a></li>
+        <li><a th:href = "@{/mvc/projects/showAll}" target="_blank"> Projects</a></li>
+        <li><a href= "tasks.html" target="_blank">Tasks</a></li>
+        <li><a th:href = "@{/mvc/help}" href="/help.html">Help</a></li>
+        <li><a th:href = "@{/login}" href = "/login.html">Logout</a></li>
+    </ul>
+</div>
+<ul class="add_contact">
+    <li class="add_contact"><a th:href = "@{/mvc/contact/insert}" href="/insertContact.html"> New contact</a></li>
+</ul>
+
+
+
+<table class= "striped" >
+
+    <thead>
+    <tr>
+        <td>Contact name</td>
+        <td>Company name</td>
+        <td>Email</td>
+        <td>Phone Number</td>
+        <td>Address</td>
+        <td>Actions</td>
+    </tr>
+    </thead>
+    <!--<a th:href="@{/mvc/company/{id}/delete(id=${u.id})}">-->
+    <!--<img class = "deleteUser"/>-->
+    <!--</a>-->
+    <tbody  th:each="co : ${contact}">
+    <tr>
+        <td> <span th:text="${co.contact_name}">Contact name </span></td>
+        <td><span th:text="${co.company_name}">Company name </span></td>
+        <td><span th:text="${co.email}">Email </span></td>
+        <td><span th:text="${co.phone_number}">Phone number </span></td>
+        <td><span th:text="${co.address}">Address </span></td>
+        <td>
+            <a th:href="@{/mvc/contact/{id}/delete(id=${co.contact_id})}">
+                <img src="/img/del.png"  class = "deleteContact"/>
+            </a>
+            <a th:href = "@{/mvc/contact/{id}/modify(id=${co.contact_id})}" href="/modifyContact.html">Edit
+                <img class = "modifyContact"/>
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+
+</body>
+
+</html>

@@ -1,15 +1,22 @@
 package com.sales_portal.demo.data.DAO;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
 
+@Data
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
+@Table(name = "contact")
+@NoArgsConstructor
 public class Contact {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer contact_id;
     private String contact_name;
     private String company_name;
@@ -23,4 +30,18 @@ public class Contact {
 
     @OneToMany(mappedBy = "contact")
     private List<Projects> projects;
+
+    @Builder
+
+    public Contact(Integer contact_id, String contact_name, String company_name,
+                   String email, String phone_number, String address, Integer user_id) {
+        this.contact_id = contact_id;
+        this.contact_name = contact_name;
+        this.company_name = company_name;
+        this.email = email;
+        this.phone_number = phone_number;
+        this.address = address;
+        this.user_id = user_id;
+
+    }
 }

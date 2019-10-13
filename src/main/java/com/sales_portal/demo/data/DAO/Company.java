@@ -18,7 +18,7 @@ public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer company_id;
-    private String company_name;
+    private String companyName;
     private String company_website;
     private String company_address;
     private String phone_number;
@@ -31,9 +31,9 @@ public class Company {
 
 
     @Builder
-    public Company(String company_name,
+    public Company(String companyName,
                    String company_website, String phone_number, String company_address, String invoicing_details){
-        this.company_name = company_name;
+        this.companyName = companyName;
         this.company_address =company_address;
         this.company_website = company_website;
         this.phone_number = phone_number;

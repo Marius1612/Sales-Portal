@@ -29,9 +29,9 @@ class RandomStringGenerator {
     }
 
 
-    public String linkCreator(String link){
-        String activationCode = getAlphaNumericString(20);
-        link = "http://localhost:8080/login" + "?" + activationCode;
+    public String linkCreator(String activationCode){
+        //String activationCode = getAlphaNumericString(20);
+        String link = "http://localhost:8080/userValidation" + "?" + "activationCode=" + activationCode;
 
         return link;
     }

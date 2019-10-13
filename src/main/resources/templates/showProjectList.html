@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show All Projects</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/showCompanyList.css">
+    <link rel="stylesheet" type="text/css" href="/css/showContactList.css">
+
+</head>
+<body>
+
+<div class="main">
+
+    <ul>
+        <li><a th:href = "@{/mvc/company/showAll}" href = "/company.html">Clients</a></li>
+        <li><a th:href = "@{/mvc/projects/showAll}" target="_blank"> Projects</a></li>
+        <li><a href= "tasks.html" target="_blank">Tasks</a></li>
+        <li><a th:href = "@{/mvc/help}" href="/help.html">Help</a></li>
+        <li><a th:href = "@{/login}" href = "/login.html">Logout</a></li>
+    </ul>
+</div>
+<ul class="add_contact">
+    <li class="add_contact"><a th:href = "@{/mvc/projects/insert}" href="/insertProject.html"> New project</a></li>
+</ul>
+
+
+
+<table class= "striped" >
+
+    <thead>
+    <tr>
+        <td>Project Id</td>
+        <td>Company name</td>
+        <td>PO Number</td>
+        <td>Total Amount</td>
+        <td>Project Status</td>
+        <td>Start Date</td>
+        <td>Delivery date</td>
+        <td>Contact Person</td>
+    </tr>
+    </thead>
+
+    <tbody  th:each="p : ${project}">
+    <tr>
+        <td> <span th:text="${p.project_id}">Project ID </span></td>
+        <td><span th:text="${p.company_name}">Company name </span></td>
+        <td><span th:text="${p.PO_number}">PO Number </span></td>
+        <td><span th:text="${p.amount}">Total Amount  </span></td>
+        <td><span th:text="${p.project_status}">Project status </span></td>
+        <td><span th:text="${p.start_date}">Start Date </span></td>
+        <td><span th:text="${p.delivery_date}">Delivery date </span></td>
+        <td><span th:text="${p.contact_person}">Contact Person </span></td>
+        <td>
+            <a th:href="@{/mvc/project/{id}/delete(id=${p.project_id})}">
+                <img src="/img/del.png"  class = "deleteContact"/>
+            </a>
+            <a th:href = "@{/mvc/project/{id}/modify(id=${p.project_id})}" href="/modifyContact.html">Edit
+                <img class = "modifyContact"/>
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+
+</body>
+
+</html>

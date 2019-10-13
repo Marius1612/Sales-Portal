@@ -56,9 +56,9 @@ public class UserService implements IUserService{
         Users u = Users.builder().emailAddress(emailAddress)
                 .password(password).name(name).build();
         u = userRepository.save(u);
-        //activationCode = randomStringGenerator.getAlphaNumericString(20);
+        activationCode = randomStringGenerator.getAlphaNumericString(20);
         String link = randomStringGenerator.linkCreator(activationCode);
-        insertIntoPendingUser(link,u);
+        insertIntoPendingUser(activationCode,u);
         sendMail(u.getUser_id(),"mail", link);
     }
 

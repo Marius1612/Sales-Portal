@@ -22,8 +22,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
                     .antMatchers("/img/**").permitAll()
 
                     .antMatchers("/mvc/user/register/**").permitAll()
-                    .antMatchers("mvc/help/**").permitAll()
+                    .antMatchers("/mvc/help/**").permitAll()
                     .antMatchers("/mvc/home/**").permitAll()
+                    .antMatchers("/userValidation/**").permitAll()
                     .anyRequest().authenticated()
                     .and().formLogin().loginPage("/login").permitAll()
                     .and().logout().permitAll();

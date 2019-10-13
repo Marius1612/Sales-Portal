@@ -5,8 +5,8 @@
     <meta name="description" content="Sales system administration">
     <meta name="author" content="Administrator">
     <meta name="viewport" content="initial-scale = 1.0">
-    <title> New Company</title>
-     <!--Compiled and minified CSS-->
+    <title> Edit Company</title>
+    <!--Compiled and minified CSS-->
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -32,36 +32,36 @@
 <div class="new_company">
 
     <div class="form">
-        <h1>Create new company</h1>
+        <h1>Update existing company</h1>
         <div class="row">
-            <form th:action="@{/mvc/company/insert}" method="post" class="col s12">
+            <form th:action="@{/mvc/company/{id}/modify(id=${company.company_id})}" method="post" class="col s12">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="company_name" type="text" name = "company_name" class="validate">
+                        <input id="company_name"  th:value="${company.company_name}" type="text" name = "company_name" class="validate">
                         <label for="company_name">Company Name</label>
                     </div>
                     <div class="input-field col s12">
-                        <input id="website" type="text" name = "company_website" class="validate">
+                        <input id="website" th:value="${company.company_website}" type="text" name = "company_website" class="validate">
                         <label for="website">Website</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="phone_number" type="text" name="phone_number" class="validate">
+                        <input id="phone_number" th:value="${company.phone_number}" type="text" name="phone_number" class="validate">
                         <label for="phone_number">Phone Number</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="address" type="text" name="company_address" class="validate">
+                        <input id="address" th:value="${company.company_address}" type="text" name="company_address" class="validate">
                         <label for="address">Address</label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="invoicing_details" type="text" name = "invoicing_details" class="validate">
+                        <input id="invoicing_details" th:value="${company.invoicing_details}" type="text" name = "invoicing_details" class="validate">
                         <label for="invoicing_details">Invoicing details</label>
                     </div>
                 </div>

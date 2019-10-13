@@ -1,13 +1,12 @@
 package com.sales_portal.demo.data.DAO;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.Date;
 @Data
 @Entity
 @Table(name = "pending_user")
+@NoArgsConstructor
 public class PendingUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

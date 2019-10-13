@@ -2,6 +2,10 @@
 table{
   color: #fff;
 }
+.deleteCompany{
+height: 30px;
+vertical-align: middle;
+}
 .actions i:hover, .actions i:active{
   background: #73C6B6;
   color: #fff;
