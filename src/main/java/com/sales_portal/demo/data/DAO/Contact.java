@@ -25,17 +25,17 @@ public class Contact {
     private String address;
     private Integer user_id;
 
-    @ManyToMany(mappedBy = "contact")
-    private Set<Company> companies;
-
     @OneToMany(mappedBy = "contact")
     private List<Projects> projects;
 
-    @Builder
+    @ManyToOne
+    @JoinColumn
+    private Company company;
 
-    public Contact(Integer contact_id, String contact_name, String company_name,
+    @Builder
+    public Contact(String contact_name, String company_name,
                    String email, String phone_number, String address, Integer user_id) {
-        this.contact_id = contact_id;
+
         this.contact_name = contact_name;
         this.company_name = company_name;
         this.email = email;

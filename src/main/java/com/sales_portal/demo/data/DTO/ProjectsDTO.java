@@ -3,6 +3,8 @@ package com.sales_portal.demo.data.DTO;
 import com.sales_portal.demo.data.DAO.Projects;
 import lombok.Getter;
 
+import java.util.Date;
+
 @Getter
 public class ProjectsDTO {
     private Integer project_id;
@@ -10,8 +12,8 @@ public class ProjectsDTO {
     private String PO_number;
     private Double amount;
     private String project_status;
-    private String start_date;
-    private String delivery_date;
+    private Date start_date;
+    private Date delivery_date;
     private String contact_person;
     private Integer user_id;
 

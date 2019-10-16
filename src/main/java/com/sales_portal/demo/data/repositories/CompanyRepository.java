@@ -13,5 +13,5 @@ public interface CompanyRepository extends CrudRepository <Company, Integer>{
         Optional<Company> findById(Integer company_id);
 
 
-        Iterable<Company> findByCompanyName(String companyName);
+        Iterable<Company> findByCompanyNameContaining(String companyName);
 }

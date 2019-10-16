@@ -2,6 +2,7 @@ package com.sales_portal.demo.controllers;
 
 import com.sales_portal.demo.services.ProjectService;
 import lombok.AllArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,7 +32,7 @@ public class ProjectsController {
 
     @PostMapping("mvc/project/insert")
     public ModelAndView insertProject(String company_name, String PO_number, Double amount,
-                                      String project_status, Date start_date, Date delivery_date, String contact_person){
+                                      String project_status, @DateTimeFormat(iso = DateTimeFormat.ISO.DATE , pattern = "yyyy-MM-dd" ) Date start_date, @DateTimeFormat(pattern = "yyyy-MM-dd") Date delivery_date, String contact_person){
        projectService.insertProject(company_name,PO_number,amount,project_status,start_date,delivery_date,contact_person);
         return showAllProjects();
 

@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -21,8 +22,8 @@ public class Projects {
     private String PO_number;
     private Double amount;
     private String project_status;
-    private String start_date;
-    private String delivery_date;
+    private Date start_date;
+    private Date delivery_date;
     private String contact_person;
     private Integer user_id;
 
@@ -32,7 +33,7 @@ public class Projects {
 
     @Builder
     public Projects(Integer project_id, String company_name, String PO_number, Double amount, String project_status,
-                    String start_date, String delivery_date, String contact_person, Integer user_id, Contact contact) {
+                    Date start_date, Date delivery_date, String contact_person, Integer user_id, Contact contact) {
         this.project_id = project_id;
         this.company_name = company_name;
         this.PO_number = PO_number;

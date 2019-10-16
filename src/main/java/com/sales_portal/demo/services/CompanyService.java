@@ -5,7 +5,6 @@ import com.sales_portal.demo.data.DAO.Company;
 import com.sales_portal.demo.data.DTO.CompanyDTO;
 import com.sales_portal.demo.data.repositories.CompanyRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -21,7 +20,7 @@ public class CompanyService implements ICompanyService{
     @Override
     public List<CompanyDTO> listCompanyByName(String company_name) {
         List<CompanyDTO> companies = new ArrayList<>();
-        Iterable<Company> all = companyRepository.findByCompanyName(company_name);
+        Iterable<Company> all = companyRepository.findByCompanyNameContaining(company_name);
 
         all.forEach(c -> companies.add(new CompanyDTO(c)));
         return companies;
@@ -53,6 +52,7 @@ public class CompanyService implements ICompanyService{
                 .company_address(company_address).invoicing_details(invoicing_details).build();
 
         companyRepository.save(c);
+
     }
 
 

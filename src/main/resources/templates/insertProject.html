@@ -5,8 +5,8 @@
     <meta name="description" content="Sales system administration">
     <meta name="author" content="Administrator">
     <meta name="viewport" content="initial-scale = 1.0">
-    <title> New Company</title>
-     <!--Compiled and minified CSS-->
+    <title> New Project</title>
+    <!--Compiled and minified CSS-->
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -22,19 +22,19 @@
 <div class="main">
 
     <ul>
-        <li><a th:href = "@{/mvc/company/showAll}" href = "company.html">Clients</a></li>
+        <li><a th:href = "@{/mvc/company/showAll}" href = "showCompanyList.html">Clients</a></li>
         <li><a th:href = "@{/mvc/projects/showAll}" > Projects</a></li>
         <li><a href= "tasks.html" >Tasks</a></li>
         <li><a th:href = "@{/mvc/help}" href="help.html">Help</a></li>
         <li><a th:href = "@{/login}" href = "login.html">Logout</a></li>
     </ul>
 </div>
-<div class="new_company">
+<div class="new_contact">
 
     <div class="form">
-        <h1>Create new company</h1>
+        <h1>Create new project</h1>
         <div class="row">
-            <form th:action="@{/mvc/company/insert}" method="post" class="col s12">
+            <form th:action="@{/mvc/project/insert}" method="post" class="col s12">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 <div class="row">
                     <div class="input-field col s12">
@@ -42,27 +42,39 @@
                         <label for="company_name">Company Name</label>
                     </div>
                     <div class="input-field col s12">
-                        <input id="website" type="text" name = "company_website" class="validate">
-                        <label for="website">Website</label>
+                        <input id="PO_number" type="text" name = "PO_number" class="validate">
+                        <label for="PO_number"> PO Number</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="phone_number" type="text" name="phone_number" class="validate">
-                        <label for="phone_number">Phone Number</label>
+                        <input id="amount" type="text" name="amount" class="validate">
+                        <label for="amount">Project amount</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="address" type="text" name="company_address" class="validate">
-                        <label for="address">Address</label>
+                        <input id="project_status" type="text" name="project_status" class="validate">
+                        <label for="project_status">Project_status</label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="invoicing_details" type="text" name = "invoicing_details" class="validate">
-                        <label for="invoicing_details">Invoicing details</label>
+                        <input id="start_date" type="date" pattern="yyyy-MM-dd" name = "start_date">
+                        <label for="start_date">Start Date</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="delivery_date" type="date" pattern="yyyy-MM-dd" name = "delivery_date">
+                        <label for="delivery_date">Delivery Date</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="contact_person" type="text" name="contact_person" class="validate">
+                        <label for="contact_person">Contact Person</label>
                     </div>
                 </div>
 

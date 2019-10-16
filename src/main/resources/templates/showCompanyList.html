@@ -14,12 +14,23 @@
 </head>
 <body>
 
+
+<script>
+function searchKeyUp() {
+
+document.getElementById("formSearch").submit()
+document.getElementById("formSearch").focus();
+
+
+  }
+</script>
+
 <div class="main">
 
     <ul>
         <li><a th:href = "@{/mvc/contact/showAll}" href = "/showContactList.html">Contacts</a></li>
-        <li><a th:href = "@{/mvc/projects/showAll}" target="_blank"> Projects</a></li>
-        <li><a href= "tasks.html" target="_blank">Tasks</a></li>
+        <li><a th:href = "@{/mvc/projects/showAll}" > Projects</a></li>
+        <li><a href= "tasks.html" >Tasks</a></li>
         <li><a th:href = "@{/mvc/help}" href="/help.html">Help</a></li>
         <li><a th:href = "@{/login}" href = "/login.html">Logout</a></li>
     </ul>
@@ -27,13 +38,12 @@
 <ul class="add_comp">
     <li class="add_comp"><a th:href = "@{/mvc/company/insert}" href="/insertCompany.html"> New company</a></li>
 </ul>
-<form name="search" th:action="@{/mvc/company/showAll}" method="post">
-<input type="text" name="search" id="search" th:value="${search}"/>
-<input type="submit" value="Search"/>
-<!--<div th:if="${not #search.isEmpty()}">-->
 
-
-<table class= "striped" >
+<form name="search" th:action="@{/mvc/company/showAll}" method="post" id="formSearch">
+    <input type="text" autofocus value="value text" onkeyup="searchKeyUp()"  name="search" id="search" th:value="${search}" onfocus="var t = this.value; this.value = ''; this.value = t;"/>
+    <!--<input onfocus="var t = this.value; this.value = ''; this.value = t;"/>-->
+    <!--<input type="text" autofocus value="value text" onfocus="this.value = this.value;"/>-->
+    <table class= "striped" >
 
     <thead>
     <tr>
@@ -45,9 +55,7 @@
         <td>Actions</td>
     </tr>
     </thead>
-    <!--<a th:href="@{/mvc/company/{id}/delete(id=${u.id})}">-->
-        <!--<img class = "deleteUser"/>-->
-    <!--</a>-->
+
     <tbody  th:each="c : ${company}">
     <tr>
     <td> <span th:text="${c.companyName}">Company name </span></td>
@@ -68,6 +76,7 @@
 </table>
 </div>
 </form>
+
 </body>
 
 </html>

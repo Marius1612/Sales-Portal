@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 
@@ -29,6 +30,8 @@ public class Company {
     @JoinTable(name = "company_to_contact")
     private Set<Contact> contact;
 
+    @OneToMany(mappedBy = "company")
+    private List<Contact> contacts;
 
     @Builder
     public Company(String companyName,
