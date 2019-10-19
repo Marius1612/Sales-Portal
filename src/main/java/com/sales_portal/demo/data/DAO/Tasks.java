@@ -18,8 +18,8 @@ public class Tasks {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer task_id;
-    private String message;
-    private Date date_created;
+    private String comment;
+    private Date followUpDate;
     private Date ToDo_date;
     private Integer user_id;
 
@@ -29,9 +29,14 @@ public class Tasks {
     private Set<Contact> contact;
 
 
-    @Builder
-    public Tasks(String message, Date date_created,
-                 Date ToDo_date, Integer user_id){
 
+    @Builder
+    public Tasks(Integer task_id, String comment, Date followUpDate,
+                  Integer user_id){
+
+        this.task_id = task_id;
+        this.comment = comment;
+        this.followUpDate = followUpDate;
+        this.user_id = user_id;
     }
 }

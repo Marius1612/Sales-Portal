@@ -60,14 +60,14 @@ public class ContactService implements  IContactService{
         });
     }
 
-    public void updateContact(String contact_name, String company_name,
-                              String email,String phone_number, String address) {
-        Contact co = Contact.builder().contact_name(contact_name).company_name(company_name)
-                .email(email).phone_number(phone_number)
-                .address(address).build();
-
-        contactRepository.save(co);
-    }
+//    public void updateContact(String contact_name, String company_name,
+//                              String email,String phone_number, String address) {
+//        Contact co = Contact.builder().contact_name(contact_name).company_name(company_name)
+//                .email(email).phone_number(phone_number)
+//                .address(address).build();
+//
+//        contactRepository.save(co);
+//    }
 
     public Contact getContact(Integer id){
         return contactRepository.findById(id).get();

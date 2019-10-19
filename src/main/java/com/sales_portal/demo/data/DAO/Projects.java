@@ -18,12 +18,12 @@ public class Projects {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer project_id;
-    private String company_name;
+    private String companyName;
     private String PO_number;
     private Double amount;
     private String project_status;
-    private Date start_date;
-    private Date delivery_date;
+    private java.sql.Date start_date;
+    private java.sql.Date delivery_date;
     private String contact_person;
     private Integer user_id;
 
@@ -32,10 +32,10 @@ public class Projects {
     private Contact contact;
 
     @Builder
-    public Projects(Integer project_id, String company_name, String PO_number, Double amount, String project_status,
-                    Date start_date, Date delivery_date, String contact_person, Integer user_id, Contact contact) {
+    public Projects(Integer project_id, String companyName, String PO_number, Double amount, String project_status,
+                    java.sql.Date start_date, java.sql.Date delivery_date, String contact_person, Integer user_id, Contact contact) {
         this.project_id = project_id;
-        this.company_name = company_name;
+        this.companyName = companyName;
         this.PO_number = PO_number;
         this.amount = amount;
         this.project_status = project_status;
@@ -45,4 +45,6 @@ public class Projects {
         this.user_id = user_id;
         this.contact = contact;
     }
+
+
 }

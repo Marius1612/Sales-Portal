@@ -19,8 +19,8 @@
 
     <ul>
         <li><a th:href = "@{/mvc/company/showAll}" href = "/company.html">Clients</a></li>
-        <li><a th:href = "@{/mvc/projects/showAll}" > Projects</a></li>
-        <li><a href= "tasks.html" >Tasks</a></li>
+        <li><a th:href = "@{/mvc/project/showAll}"> Projects</a></li>
+        <li><a th:href= "@{/mvc/tasks/showAll}" >Tasks</a></li>
         <li><a th:href = "@{/mvc/help}" href="/help.html">Help</a></li>
         <li><a th:href = "@{/login}" href = "/login.html">Logout</a></li>
     </ul>
@@ -30,6 +30,12 @@
 </ul>
 
 
+<form name="search" th:action="@{/mvc/project/showAll}" method="post"
+      id="formSearch">
+    <input type="text" autofocus value="value text" onkeyup="searchKeyUp()"
+           name="search" id="search"
+           th:value="${search}" onfocus="var t = this.value; this.value = '';
+            this.value = t;"/>
 
 <table class= "striped" >
 
@@ -49,7 +55,7 @@
     <tbody  th:each="p : ${project}">
     <tr>
         <td> <span th:text="${p.project_id}">Project ID </span></td>
-        <td><span th:text="${p.company_name}">Company name </span></td>
+        <td><span th:text="${p.companyName}">Company name </span></td>
         <td><span th:text="${p.PO_number}">PO Number </span></td>
         <td><span th:text="${p.amount}">Total Amount  </span></td>
         <td><span th:text="${p.project_status}">Project status </span></td>
@@ -60,15 +66,18 @@
             <a th:href="@{/mvc/project/{id}/delete(id=${p.project_id})}">
                 <img src="/img/del.png"  class = "deleteContact"/>
             </a>
-            <a th:href = "@{/mvc/project/{id}/modify(id=${p.project_id})}" href="/modifyContact.html">Edit
+            <a th:href = "@{/mvc/project/{id}/modify(id=${p.project_id})}" href="/modifyProject.html">Edit
                 <img class = "modifyContact"/>
             </a>
         </td>
+
     </tr>
+
     </tbody>
+
 </table>
 
-
+</form>
 
 </body>
 

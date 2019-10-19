@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Tasks</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/showCompanyList.css">
+    <link rel="stylesheet" type="text/css" href="/css/showContactList.css">
+
+</head>
+<body>
+<div class="main">
+
+    <ul>
+        <li><a th:href = "@{/mvc/company/showAll}" href = "/company.html">Clients</a></li>
+        <li><a th:href = "@{/mvc/project/showAll}"> Projects</a></li>
+        <li><a th:href= "@{/mvc/tasks/showAll}" >Tasks</a></li>
+        <li><a th:href = "@{/mvc/help}" href="/help.html">Help</a></li>
+        <li><a th:href = "@{/login}" href = "/login.html">Logout</a></li>
+    </ul>
+</div>
+<ul class="add_contact">
+    <li class="add_contact"><a th:href = "@{/mvc/tasks/insert}" href="/insertTask.html"> New Task</a></li>
+</ul>
+
+
+<form name="search" th:action="@{/mvc/tasks/showAll}" method="post"
+      id="formSearch">
+    <input type="text" autofocus value="value text" onkeyup="searchKeyUp()"
+           name="search" id="search"
+           th:value="${search}" onfocus="var t = this.value; this.value = '';
+            this.value = t;"/>
+
+    <table class= "striped" >
+
+        <thead>
+        <tr>
+            <td>Task Id</td>
+            <td>Follow up Date</td>
+            <td>Comment</td>
+        </tr>
+        </thead>
+
+        <tbody  th:each="t : ${tasks}">
+        <tr>
+            <td> <span th:text="${t.task_id}">Project ID </span></td>
+            <td><span th:text="${t.followUpDate}">Company name </span></td>
+            <td><span th:text="${t.comment}">PO Number </span></td>
+
+            <td>
+                <a th:href="@{/mvc/tasks/{id}/delete(id=${t.task_id})}">
+                    <img src="/img/del.png"  class = "deleteContact"/>
+                </a>
+                <a th:href = "@{/mvc/tasks/{id}/modify(id=${t.task_id})}" href="/modifyTasks.html">Edit
+                    <img class = "modifyContact"/>
+                </a>
+            </td>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</form>
+
+</body>
+</html>

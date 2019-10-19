@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html lang = "en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="description" content="Sales system administration">
     <meta name="author" content="Administrator">
     <meta name="viewport" content="initial-scale = 1.0">
-    <title> Edit Contact</title>
-    <!--Compiled and minified CSS-->
-
+    <title>Modify Project</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
@@ -19,6 +17,7 @@
 
 </head>
 <body>
+
 <div class="main">
 
     <ul>
@@ -32,40 +31,53 @@
 <div class="new_company">
 
     <div class="form">
-        <h1>Update existing contact</h1>
+        <h1>Update existing project</h1>
         <div class="row">
-            <form th:action="@{/mvc/contact/{id}/modify(id=${contact.contact_id})}" method="post" class="col s12">
+            <form th:action="@{/mvc/project/{id}/modify(id=${project.project_id})}" method="post" class="col s12">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="contact_name"  th:value="${contact.contact_name}" type="text" name = "contact_name" class="validate">
-                        <label for="contact_name">Contact Name</label>
-                    </div>
-                    <div class="input-field col s12">
-                        <input id="company_name" th:value="${contact.company_name}" type="text" name = "company_name" class="validate">
+                        <input id="company_name"  th:value="${project.companyName}" type="text" name = "company_name" class="validate">
                         <label for="company_name">Company Name</label>
                     </div>
-                </div>
-                <div class="row">
                     <div class="input-field col s12">
-                        <input id="email" th:value="${contact.email}" type="text" name="email" class="validate">
-                        <label for="email">Email Address</label>
+                        <input id="PO_number" th:value="${project.PO_number}" type="text" name = "PO_number" class="validate">
+                        <label for="PO_number">PO Number</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="phone_number" th:value="${contact.phone_number}" type="text" name="phone_number" class="validate">
-                        <label for="phone_number">Phone number</label>
+                        <input id="amount" th:value="${project.amount}" type="text" name="amount" class="validate">
+                        <label for="amount">Amount </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="project_status" th:value="${project.project_status}" type="text" name="project_status" class="validate">
+                        <label for="project_status">Project Status</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="start_date" th:value="${project.start_date}" type="text" name = "start_date" class="validate">
+                        <label for="start_date">Start Date</label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="address" th:value="${contact.address}" type="text" name = "address" class="validate">
-                        <label for="address">Address</label>
+                        <input id="delivery_date" th:value="${project.delivery_date}" type="text" name = "delivery_date" class="validate">
+                        <label for="delivery_date">Delivery Date</label>
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="contact_person" th:value="${project.contact_person}" type="text" name = "contact_person" class="validate">
+                        <label for="contact_person">Contact Person</label>
+                    </div>
+                </div>
 
                 <button input type="submit" value ="Save">Save</button>
 

@@ -20,7 +20,8 @@ public class CompanyService implements ICompanyService{
     @Override
     public List<CompanyDTO> listCompanyByName(String company_name) {
         List<CompanyDTO> companies = new ArrayList<>();
-        Iterable<Company> all = companyRepository.findByCompanyNameContaining(company_name);
+        Iterable<Company> all = companyRepository
+                .findByCompanyNameContaining(company_name);
 
         all.forEach(c -> companies.add(new CompanyDTO(c)));
         return companies;
@@ -36,20 +37,24 @@ public class CompanyService implements ICompanyService{
     }
 
     @Override
-    public void insertCompany(String company_name, String company_website, String phone_number,
+    public void insertCompany(String company_name, String company_website,
+                              String phone_number,
                               String company_address, String invoicing_details) {
         Company c = Company.builder().companyName(company_name)
                 .company_website(company_website).phone_number(phone_number)
-                .company_address(company_address).invoicing_details(invoicing_details).build();
+                .company_address(company_address).invoicing_details(invoicing_details)
+                .build();
 
         companyRepository.save(c);
     }
 
-    public void updateCompany(String companyName, String company_website, String phone_number,
+    public void updateCompany(String companyName, String company_website,
+                              String phone_number,
                               String company_address, String invoicing_details) {
         Company c = Company.builder().companyName(companyName)
                 .company_website(company_website).phone_number(phone_number)
-                .company_address(company_address).invoicing_details(invoicing_details).build();
+                .company_address(company_address).invoicing_details(invoicing_details)
+                .build();
 
         companyRepository.save(c);
 

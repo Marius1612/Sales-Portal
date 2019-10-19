@@ -23,8 +23,8 @@
 
     <ul>
         <li><a th:href = "@{/mvc/company/showAll}" href = "showCompanyList.html">Clients</a></li>
-        <li><a th:href = "@{/mvc/projects/showAll}" > Projects</a></li>
-        <li><a href= "tasks.html" >Tasks</a></li>
+        <li><a th:href = "@{/mvc/project/showAll}" > Projects</a></li>
+        <li><a th:href= "@{/mvc/tasks/showAll}" >Tasks</a></li>
         <li><a th:href = "@{/mvc/help}" href="help.html">Help</a></li>
         <li><a th:href = "@{/login}" href = "login.html">Logout</a></li>
     </ul>
@@ -38,7 +38,7 @@
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="company_name" type="text" name = "company_name" class="validate">
+                        <input id="company_name" type="text" name = "companyName" class="validate">
                         <label for="company_name">Company Name</label>
                     </div>
                     <div class="input-field col s12">

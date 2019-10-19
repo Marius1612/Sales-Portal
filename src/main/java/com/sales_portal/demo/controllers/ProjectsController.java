@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Date;
+import java.util.Optional;
 
 @Controller
 @AllArgsConstructor
@@ -18,10 +19,19 @@ public class ProjectsController {
     private ProjectService projectService;
 
 
-    @RequestMapping({"mvc/projects/showAll"})
+    @RequestMapping("mvc/project/showAll")
     public ModelAndView showAllProjects(){
         ModelAndView mv = new ModelAndView("showProjectList");
         mv.addObject("project",projectService.getAllProjects());
+        mv.addObject("search", "");
+        return mv;
+    }
+
+    @PostMapping("mvc/project/showAll")
+    public ModelAndView search(String search){
+        ModelAndView mv = new ModelAndView("showProjectList");
+        mv.addObject("project", projectService.listCompanyByName(search));
+        mv.addObject("search", search);
         return mv;
     }
 
@@ -32,10 +42,40 @@ public class ProjectsController {
 
     @PostMapping("mvc/project/insert")
     public ModelAndView insertProject(String company_name, String PO_number, Double amount,
-                                      String project_status, @DateTimeFormat(iso = DateTimeFormat.ISO.DATE , pattern = "yyyy-MM-dd" ) Date start_date, @DateTimeFormat(pattern = "yyyy-MM-dd") Date delivery_date, String contact_person){
+                                      String project_status, java.sql.Date start_date,java.sql.Date delivery_date, String contact_person){
        projectService.insertProject(company_name,PO_number,amount,project_status,start_date,delivery_date,contact_person);
         return showAllProjects();
 
     }
 
+    @RequestMapping("mvc/project/{id}/delete")
+    public ModelAndView deleteProject(@PathVariable Integer id){
+        projectService.deleteProject(id);
+        return showAllProjects();
+
+    }
+
+    @GetMapping("mvc/project/{id}/modify")
+
+    public ModelAndView modifyProject(@PathVariable Integer id, Optional<String> companyName,
+                                      Optional<String> PO_number, Optional<Double> amount,
+                                      Optional<String>project_status, java.sql.Date start_date,
+                                      java.sql.Date delivery_date, Optional<String>contact_person){
+        ModelAndView mv= new ModelAndView("modifyProject");
+        mv.addObject("project",projectService.getProject(id));
+        projectService.modifyProject(id,companyName,PO_number,amount,project_status,start_date,delivery_date,contact_person);
+
+        return mv;
+
+    }
+
+    @PostMapping("mvc/project/{id}/modify")
+    public ModelAndView modifyProjectDetails(@PathVariable Integer id, Optional<String> companyName,
+                                             Optional<String> PO_number, Optional<Double> amount,
+                                             Optional<String>project_status, java.sql.Date start_date,
+                                             java.sql.Date delivery_date, Optional<String>contact_person){
+        projectService.modifyProject(id,companyName,PO_number,amount,project_status,start_date,delivery_date,contact_person);
+        return showAllProjects();
+
+    }
 }
